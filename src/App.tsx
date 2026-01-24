@@ -1,27 +1,15 @@
-import BlueSkyIcon from "./assets/icons/bluesky.svg?react";
-import GitHubIcon from "./assets/icons/github.svg?react";
-import { SocialLink } from "./components/SocialLink";
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./components/Layout";
+import { Home } from "./pages/Home";
+import { Projects } from "./pages/Projects";
 
 export default function App() {
   return (
-    <div style={{ maxWidth: 860, margin: "64px auto", padding: 24, fontFamily: "system-ui" }}>
-      <h1 style={{ marginBottom: 8 }}>shouples</h1>
-      <h4 style={{ marginTop: 0, opacity: 0.8 }}>D. SHOUP</h4>
-      <p style={{ marginTop: 0, opacity: 0.8 }}>
-        Software engineer, powerlifter, enjoyer of graphic design and too-often-spicy foods. Hello.
-        👋
-      </p>
-
-      <div style={{ display: "flex", gap: 12, marginTop: 8 }}>
-        <SocialLink href="https://github.com/shouples" Icon={GitHubIcon} label="GitHub" />
-        <SocialLink
-          href="https://bsky.app/profile/shouples.bsky.social"
-          Icon={BlueSkyIcon}
-          label="BlueSky"
-        />
-      </div>
-
-      {/* projects here eventually */}
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+      </Route>
+    </Routes>
   );
 }
