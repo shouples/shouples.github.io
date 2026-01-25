@@ -25,3 +25,399 @@
   display: flex;
   gap: 12px;
 }
+
+/* Post List */
+.post-list-container {
+  margin-top: 24px;
+}
+
+.post-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  background: var(--color-surface);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.clear-filter {
+  background: none;
+  border: none;
+  color: var(--color-link);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 2px 6px;
+}
+
+.clear-filter:hover {
+  text-decoration: underline;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.post-list.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Post Card */
+.post {
+  padding: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.post-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.post-date {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Post title link */
+.post-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  color: var(--color-link);
+}
+
+/* Post content */
+.post-content {
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.post-content p {
+  margin: 0 0 1em;
+}
+
+.post-content p:last-child {
+  margin-bottom: 0;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  margin: 1.5em 0 0.5em;
+  line-height: 1.3;
+}
+
+.post-content h1:first-child,
+.post-content h2:first-child,
+.post-content h3:first-child {
+  margin-top: 0;
+}
+
+.post-content h2 {
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.3em;
+}
+
+.post-content h3 {
+  font-size: 1.1rem;
+}
+
+.post-content a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.post-content a:hover {
+  text-decoration: underline;
+}
+
+.post-content ul,
+.post-content ol {
+  margin: 0 0 1em;
+  padding-left: 1.5em;
+}
+
+.post-content li {
+  margin-bottom: 0.4em;
+}
+
+.post-content blockquote {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface);
+  border-radius: 0 6px 6px 0;
+}
+
+.post-content blockquote p {
+  margin: 0;
+}
+
+.post-content code {
+  font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  background: var(--color-surface);
+  border-radius: 4px;
+}
+
+.post-content pre {
+  margin: 1em 0;
+  padding: 1em;
+  background: var(--color-surface);
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.post-content pre code {
+  padding: 0;
+  background: none;
+}
+
+.post-content hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 1.5em 0;
+}
+
+.post-content strong {
+  font-weight: 600;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 16px 0;
+  display: block;
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.post-content img.inline {
+  display: inline;
+  margin: 0 4px;
+  vertical-align: middle;
+  border-radius: 4px;
+  box-shadow: none;
+  max-height: 1.5em;
+  width: auto;
+}
+
+/* Post images */
+.post-image {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.post-image.top {
+  margin-bottom: 12px;
+}
+
+.post-image.inline {
+  max-width: 200px;
+  flex-shrink: 0;
+}
+
+.post-body-with-image {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.post-body-with-image.image-right {
+  flex-direction: row-reverse;
+}
+
+/* Tags */
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+}
+
+.tag:hover {
+  background: var(--color-surface);
+}
+
+.tag.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+.tag.small {
+  padding: 2px 8px;
+  font-size: 0.75rem;
+}
+
+/* Post Links */
+.post-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.post-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+}
+
+.post-link:hover {
+  background: var(--color-bg-elevated);
+  border-color: var(--color-link);
+}
+
+.post-link-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Post footer */
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.post-permalink {
+  color: var(--color-text-muted);
+  padding: 4px;
+  border-radius: 4px;
+  transition:
+    color 0.15s,
+    background-color 0.15s;
+  margin-left: auto;
+}
+
+.post-permalink:hover {
+  color: var(--color-link);
+  background: var(--color-surface);
+}
+
+.post-permalink svg {
+  display: block;
+}
+
+/* Dedicated post page */
+.post-page {
+  max-width: 720px;
+}
+
+.post-page-nav {
+  padding: 16px 0;
+}
+
+.post-page-nav a {
+  color: var(--color-link);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.post-page-nav a:hover {
+  text-decoration: underline;
+}
+
+.post-page-body {
+  padding: 0;
+}
+
+.post-page-header {
+  margin-bottom: 24px;
+}
+
+.post-page-title {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.post-page-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.post-not-found {
+  text-align: center;
+  padding: 48px 0;
+}
+
+.post-not-found h2 {
+  margin: 0 0 12px;
+}
+
+.post-not-found a {
+  color: var(--color-link);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-body-with-image {
+    flex-direction: column;
+  }
+
+  .post-body-with-image.image-right {
+    flex-direction: column;
+  }
+
+  .post-image.inline {
+    max-width: 100%;
+  }
+
+  .post-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .post-page-title {
+    font-size: 1.5rem;
+  }
+}

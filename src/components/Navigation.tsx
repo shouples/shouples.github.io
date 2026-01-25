@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const navItems = [
   { to: "/", label: "Home" },
-  { to: "/projects", label: "Projects" },
+  { to: "/posts", label: "Posts" },
 ];
 
 export function Navigation() {

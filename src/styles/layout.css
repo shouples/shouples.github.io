@@ -8,11 +8,29 @@
 }
 
 .layout-header {
-  margin-top: 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-bg);
+  padding-top: 40px;
   padding-bottom: 24px;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  border-bottom: 1px solid var(--color-border);
+  /* Extend to full width */
+  margin-left: -8%;
+  margin-right: -8%;
+  padding-left: 8%;
+  padding-right: 8%;
+  width: calc(100% + 16%);
+  box-sizing: border-box;
+  transition:
+    padding-top 0.2s ease,
+    padding-bottom 0.2s ease;
 }
 
+.layout-header.compact {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
 .header-top {
   display: flex;
   justify-content: space-between;
@@ -40,6 +58,18 @@
 .header-bio {
   margin: 8px 0 0;
   opacity: 0.7;
+  max-height: 100px;
+  overflow: hidden;
+  transition:
+    max-height 0.2s ease,
+    opacity 0.2s ease,
+    margin 0.2s ease;
+}
+
+.layout-header.compact .header-bio {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
 }
 
 .layout-main {
@@ -50,7 +80,23 @@
   margin-top: 48px;
   padding-top: 24px;
   padding-bottom: 24px;
-  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Extend to full width */
+  margin-left: -8%;
+  margin-right: -8%;
+  padding-left: 8%;
+  padding-right: 8%;
+  width: calc(100% + 16%);
+  box-sizing: border-box;
+}
+
+.layout-footer p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
 }
 
 @media (max-width: 768px) {
@@ -58,12 +104,37 @@
     padding: 0 5%;
   }
 
+  .layout-header,
+  .layout-footer {
+    margin-left: -5.5%;
+    margin-right: -5.5%;
+    padding-left: 5.5%;
+    padding-right: 5.5%;
+    width: calc(100% + 11%);
+  }
+
   .layout-header {
-    margin-top: 24px;
+    padding-top: 24px;
   }
 }
+
 @media (max-width: 480px) {
   .layout {
     padding: 0 16px;
+  }
+
+  .layout-header,
+  .layout-footer {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: calc(100% + 32px);
+  }
+
+  .layout-footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
   }
 }

@@ -13,6 +13,7 @@ export function Footer() {
           label="BlueSky"
         />
       </div>
+      <p>© 2026 Dave Shoup</p>
     </footer>
   );
 }
