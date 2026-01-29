@@ -67,11 +67,12 @@ export function Post({
         {image && image.position === "left" && (
           <img className="post-image inline" src={image.src} alt={image.alt} />
         )}
-        <div className="post-content">{content}</div>
+        <div className="post-content post-content-truncated">{content}</div>
         {image && image.position === "right" && (
           <img className="post-image inline" src={image.src} alt={image.alt} />
         )}
       </div>
+      <Link to={`/posts/${id}`} className="read-more-link">Read more →</Link>
 
       {tags && tags.length > 0 && (
         <div className="post-tags">

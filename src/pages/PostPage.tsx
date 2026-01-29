@@ -26,7 +26,7 @@ export function PostPage() {
   return (
     <article className="post-page">
       <nav className="post-page-nav">
-        <Link to="/posts">← Back to all posts</Link>
+        <Link to="/">← Back to home</Link>
       </nav>
 
       <div className="post-page-body">

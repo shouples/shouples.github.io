@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navigation } from "./Navigation";
+import { Link } from "react-router-dom";
 
 const COMPACT_THRESHOLD = 80;
 const EXPAND_THRESHOLD = 20;
@@ -27,10 +27,9 @@ export function Header() {
     <header className={`layout-header${isCompact ? " compact" : ""}`}>
       <div className="header-top">
         <div className="header-title">
-          <h1>shouples</h1>
+          <h1><Link to="/" className="header-title-link">shouples</Link></h1>
           <span className="header-subtitle">D. SHOUP</span>
         </div>
-        <Navigation />
       </div>
       <p className="header-bio">
         Software engineer, powerlifter, enjoyer of graphic design and too-often-spicy foods.
