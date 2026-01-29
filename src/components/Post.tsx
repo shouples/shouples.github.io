@@ -1,4 +1,4 @@
-import type { ComponentType, SVGProps } from "react";
+import { type ComponentType, type SVGProps, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Tag } from "./Tag";
 
@@ -48,6 +48,20 @@ export function Post({
   onTagClick,
   activeTag,
 }: PostProps) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [isTruncated, setIsTruncated] = useState(false);
+
+  useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+
+    const check = () => setIsTruncated(el.scrollHeight > el.clientHeight);
+
+    const observer = new ResizeObserver(check);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const hasInlineImage = image && (image.position === "left" || image.position === "right");
 
   return (
@@ -67,44 +81,46 @@ export function Post({
         {image && image.position === "left" && (
           <img className="post-image inline" src={image.src} alt={image.alt} />
         )}
-        <div className="post-content post-content-truncated">{content}</div>
+        <div ref={contentRef} className="post-content post-content-truncated">{content}</div>
         {image && image.position === "right" && (
           <img className="post-image inline" src={image.src} alt={image.alt} />
         )}
       </div>
-      <Link to={`/posts/${id}`} className="read-more-link">Read more →</Link>
-
-      {tags && tags.length > 0 && (
-        <div className="post-tags">
-          {tags.map((tag) => (
-            <Tag
-              key={tag}
-              label={tag}
-              onClick={onTagClick}
-              isActive={activeTag === tag}
-              variant="small"
-            />
-          ))}
-        </div>
-      )}
-
       <footer className="post-footer">
-        {links && links.length > 0 && (
-          <div className="post-links">
-            {links.map((link) => (
-              <a
-                key={link.url}
-                href={link.url}
-                className="post-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.icon && <link.icon className="post-link-icon" />}
-                {link.label}
-              </a>
-            ))}
-          </div>
-        )}
+        <div className="post-footer-left">
+          {isTruncated && <Link to={`/posts/${id}`} className="read-more-link">Read more →</Link>}
+
+          {tags && tags.length > 0 && (
+            <div className="post-tags">
+              {tags.map((tag) => (
+                <Tag
+                  key={tag}
+                  label={tag}
+                  onClick={onTagClick}
+                  isActive={activeTag === tag}
+                  variant="small"
+                />
+              ))}
+            </div>
+          )}
+
+          {links && links.length > 0 && (
+            <div className="post-links">
+              {links.map((link) => (
+                <a
+                  key={link.url}
+                  href={link.url}
+                  className="post-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.icon && <link.icon className="post-link-icon" />}
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
         <Link to={`/posts/${id}`} className="post-permalink" title="View post">
           <svg
             width="16"
